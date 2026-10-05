@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Glitch Escape — a bright first-person maze game." />
+  <title>Glitch Escape | Find Your Way Out</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <section id="menuScreen" class="screen menu-screen">
+      <div class="menu-decoration decor-one"></div>
+      <div class="menu-decoration decor-two"></div>
+      <div class="menu-grid"></div>
+
+      <div class="menu-layout">
+        <div class="hero-copy">
+          <div class="event-badge">
+            <span class="badge-dot"></span>
+            IIIT NAGPUR · GAME JAM 2026
+          </div>
+
+          <h1>GLITCH<br><span>ESCAPE</span></h1>
+          <p class="tagline">FIND THE WAY OUT.</p>
+
+          <p class="intro">
+            Enter the maze, trust your instincts and reach the exit
+            before the clock runs out.
+          </p>
+
+          <button id="startBtn" class="main-btn">
+            <span>START GAME</span>
+            <b>→</b>
+          </button>
+
+          <div class="control-row">
+            <span><kbd>W A S D</kbd> Move</span>
+            <span><kbd>← →</kbd> Turn</span>
+            <span><kbd>ESC</kbd> Pause</span>
+          </div>
+        </div>
+
+        <div class="character-card">
+          <div class="card-glow"></div>
+          <img src="/assets/maze-runner.svg" alt="Stylized maze runner character" />
+          <div class="character-caption">
+            <span>THE SEEKER</span>
+            <small>Find the exit. Beat the clock.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen">
+      <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+      <div class="game-vignette"></div>
+
+      <header class="game-hud">
+        <div class="hud-card level-card">
+          <span class="hud-label">MAZE</span>
+          <strong id="levelText">01 / 05</strong>
+        </div>
+
+        <div class="hud-card timer-card">
+          <span class="hud-label">TIME LEFT</span>
+          <strong id="timerText">01:00</strong>
+        </div>
+
+        <button id="pauseBtn" class="pause-btn" aria-label="Pause game">Ⅱ</button>
+      </header>
+
+      <div class="direction-pill">
+        <span class="compass-dot"></span>
+        FIND THE EXIT
+      </div>
+
+      <div class="crosshair">+</div>
+
+      <div class="bottom-hud">
+        <div class="tip-card">
+          <strong>ESCAPE THE MAZE</strong>
+          <span>Reach the glowing door before time runs out.</span>
+        </div>
+      </div>
+
+      <div id="pauseOverlay" class="overlay hidden">
+        <div class="modal-card">
+          <div class="modal-icon">Ⅱ</div>
+          <p class="modal-kicker">TAKE A BREATH</p>
+          <h2>GAME PAUSED</h2>
+          <p>The maze is waiting for you.</p>
+          <button id="resumeBtn" class="main-btn compact"><span>RESUME</span><b>→</b></button>
+          <button id="restartBtn" class="text-btn">Restart maze</button>
+        </div>
+      </div>
+
+      <div id="timeUpOverlay" class="overlay hidden">
+        <div class="modal-card">
+          <div class="modal-icon danger">!</div>
+          <p class="modal-kicker">TIME'S UP</p>
+          <h2>THE EXIT<br>WAS CLOSE.</h2>
+          <p>You ran out of time. Try the maze again.</p>
+          <button id="retryBtn" class="main-btn compact"><span>TRY AGAIN</span><b>↻</b></button>
+          <button id="homeBtn1" class="text-btn">Main menu</button>
+        </div>
+      </div>
+
+      <div id="winOverlay" class="overlay hidden">
+        <div class="modal-card win-card">
+          <div class="trophy">★</div>
+          <p class="modal-kicker">MAZE COMPLETE</p>
+          <h2>YOU<br>ESCAPED!</h2>
+          <p id="finalStats">All five mazes cleared.</p>
+          <button id="playAgainBtn" class="main-btn compact"><span>PLAY AGAIN</span><b>↻</b></button>
+          <button id="homeBtn2" class="text-btn">Main menu</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="/game.js"></script>
+</body>
+</html>
